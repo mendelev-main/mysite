@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: polls
+      POSTGRES_PASSWORD: my_password
+      POSTGRES_DB: polls
+    volumes:
+      - db-data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+
+volumes:
+  db-data: null
