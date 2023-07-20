@@ -118,6 +118,38 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-ckeditor"
+version = "6.6.1"
+description = "Django admin CKEditor integration."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django-ckeditor-6.6.1.tar.gz", hash = "sha256:a804a98137058c00fc092aafc475e9491b2ca7c68c84d6ca12c4fa2453696017"},
+    {file = "django_ckeditor-6.6.1-py3-none-any.whl", hash = "sha256:44894c2a1050f58edcab6f9e631dbb63fa5532e7432a5650cfd878b6f33b0d46"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+django-js-asset = ">=2.0"
+
+[[package]]
+name = "django-js-asset"
+version = "2.1.0"
+description = "script tag with additional attributes for django.forms.Media"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django_js_asset-2.1.0-py3-none-any.whl", hash = "sha256:36a3a4dd6e9efc895fb127d13126020f6ec1ec9469ad42878d42143f22495d90"},
+    {file = "django_js_asset-2.1.0.tar.gz", hash = "sha256:be6f69ae5c4865617aa7726c48eddb64089a1e7d4ea7d22a35a3beb8282020f6"},
+]
+
+[package.dependencies]
+django = ">=3.2"
+
+[package.extras]
+tests = ["coverage"]
+
+[[package]]
 name = "django-registration"
 version = "3.4"
 description = "An extensible user-registration application for Django."
@@ -351,4 +383,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "591fa238e93e55c93d4f67ba6063aca8aaa810a9f9c958ee606c4e8ff56c9fd2"
+content-hash = "9457f69929ff532c8fcde683281872c8f0bbeb7f024954d2b12dc997ec059f65"

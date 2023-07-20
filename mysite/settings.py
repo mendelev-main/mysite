@@ -29,6 +29,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "overrides.apps.OverridesConfig",
+    "ckeditor",
     "blog.apps.BlogConfig",
     "polls.apps.PollsConfig",
     "django_registration",
@@ -123,4 +125,6 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGOUT_REDIRECT_URL = "/polls/"
+
+LOGOUT_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/blog/"
