@@ -3,17 +3,32 @@
 <title>{% block title %} Post {{ post.id }} {% endblock %}</title>
 
 {% block content %}
+
     <div class="card">
-  <div class="card-header">
-    <h1>{{ post.title }}</h1>
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p>{{ post.body | safe }}</p>
-      <footer class="blockquote-footer">for Vote</footer>
-    </blockquote>
-  </div>
-</div>
+        <div class="card-header">
+            <h1>{{ post.title }}</h1>
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>{{ post.body | safe }}</p>
+                <p>{{ post.tag }}</p>
+
+                <div class="position-relative">
+                    <div class="position-absolute top-50 start-50 translate-middle">
+                        <form action="{% url 'blog:upvote' post.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success">Likes - {{ post.upvote }}</button>
+                        </form>
+                        <form action="{% url 'blog:downvote' post.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Dislikes - {{ post.downvote }}</button>
+                        </form>
+                    </div>
+                </div>
+
+            </blockquote>
+        </div>
+    </div>
 
 
 
