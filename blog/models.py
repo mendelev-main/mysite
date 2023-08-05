@@ -5,13 +5,6 @@ from django.urls import reverse
 from django.contrib.contenttypes.models import ContentType
 
 
-class Tag(models.Model):
-    title = models.CharField(max_length=20)
-
-    def __str__(self):
-        return self.title
-
-
 class Post(models.Model):
     title = models.CharField(max_length=200)
     body = RichTextField()
@@ -45,3 +38,11 @@ class Vote(models.Model):
 
     class Meta:
         unique_together = ('post', 'user')
+
+
+class Tag(models.Model):
+    title = models.CharField(max_length=20)
+
+
+    def __str__(self):
+        return self.title

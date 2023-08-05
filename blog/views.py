@@ -21,7 +21,7 @@ class DetailView(generic.DetailView):
 
 class PostCreateView(LoginRequiredMixin, generic.CreateView):
     model = Post
-    fields = ["title", "body", 'tag', ]
+    fields = ["title", "body", "tag", ]
     template_name = "blog/create_post.html"
 
     def form_valid(self, form):
@@ -51,4 +51,22 @@ class TagCreateView(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class IndexTagView(generic.ListView):
+    template_name = "blog/index_tag.html"
+    context_object_name = "tags"
+
+    def get_queryset(self):
+        tags = Tag.objects.all()
+        sorted_tags = sorted(tags, key=lambda tag: tag.title)
+        return sorted_tags
+
+
+class DetailTagView(generic.DetailView):
+    model = Tag
+    template_name = "blog/detail_tag.html"
+
+
+
 

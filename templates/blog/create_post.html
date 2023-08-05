@@ -9,6 +9,9 @@
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
+            <div class="d-grid gap-2">
+                <a href="/blog/create_tag/" class="btn btn-info" role="button" data-bs-toggle="button">Create new tag</a>
+            </div>
             <input type="submit" value="Submit">
     </form>
 
