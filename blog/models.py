@@ -2,7 +2,6 @@ from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
-from django.contrib.contenttypes.models import ContentType
 
 
 class Post(models.Model):
@@ -10,7 +9,7 @@ class Post(models.Model):
     body = RichTextField()
     author = models.ForeignKey(to=User, on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True)
-    tag = models.ManyToManyField('Tag', blank=True, related_name='posts')
+    tag = models.ManyToManyField("Tag", blank=True, related_name="posts")
 
     def __str__(self):
         return self.title
@@ -37,12 +36,11 @@ class Vote(models.Model):
     up = models.BooleanField(null=False)
 
     class Meta:
-        unique_together = ('post', 'user')
+        unique_together = ("post", "user")
 
 
 class Tag(models.Model):
     title = models.CharField(max_length=20)
-
 
     def __str__(self):
         return self.title

@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.views import generic
 
-from .models import Post, Vote, Tag
+from .models import Post, Tag, Vote
 
 
 class IndexView(generic.ListView):
@@ -21,7 +21,11 @@ class DetailView(generic.DetailView):
 
 class PostCreateView(LoginRequiredMixin, generic.CreateView):
     model = Post
-    fields = ["title", "body", "tag", ]
+    fields = [
+        "title",
+        "body",
+        "tag",
+    ]
     template_name = "blog/create_post.html"
 
     def form_valid(self, form):
@@ -39,13 +43,15 @@ def downvote(request, pk: int):
 
 def _vote(request, pk: int, up: bool):
     post = shortcuts.get_object_or_404(Post, pk=pk)
-    Vote.objects.update_or_create(post=post, user=request.user, defaults={'up': up})
-    return shortcuts.redirect('blog:detail', pk=pk)
+    Vote.objects.update_or_create(post=post, user=request.user, defaults={"up": up})
+    return shortcuts.redirect("blog:detail", pk=pk)
 
 
 class TagCreateView(LoginRequiredMixin, generic.CreateView):
     model = Tag
-    fields = ["title", ]
+    fields = [
+        "title",
+    ]
     template_name = "blog/create_tag.html"
 
     def form_valid(self, form):
@@ -66,7 +72,3 @@ class IndexTagView(generic.ListView):
 class DetailTagView(generic.DetailView):
     model = Tag
     template_name = "blog/detail_tag.html"
-
-
-
-

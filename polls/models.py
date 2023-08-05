@@ -1,7 +1,6 @@
 import datetime
 
 from django.contrib import admin
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import models
 from django.utils import timezone
 

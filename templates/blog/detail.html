@@ -12,6 +12,17 @@
             <blockquote class="blockquote mb-0">
                 <p>{{ post.body | safe }}</p>
 
+                <ul>
+                    Tags:{% for tag in post.tag.all %}
+
+                    <a href="{% url 'blog:detail_tag' tag.id %}"
+                       class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2"
+                       style="--bs-focus-ring-x: 10px; --bs-focus-ring-y: 10px; --bs-focus-ring-blur: 4px">
+                        {{ tag.title }}
+                    </a>
+                {% endfor %}
+                </ul>
+
 
                 <div class="position-relative">
                     <div class="position-absolute top-50 start-50 translate-middle">

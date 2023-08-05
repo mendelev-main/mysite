@@ -12,7 +12,4 @@ urlpatterns = [
     path("create_tag/", views.TagCreateView.as_view(), name="create_tag"),
     path("index_tag/", views.IndexTagView.as_view(), name="index_tag"),
     path("detail_tag/<int:pk>/", views.DetailTagView.as_view(), name="detail_tag"),
-
-
-
 ]
