@@ -23,4 +23,6 @@ urlpatterns = [
     path("accounts/", include("django_registration.backends.one_step.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
     path("blog/", include("blog.urls")),
+    path("api-auth/", include("rest_framework.urls")),
+    path("api/v1/", include("api.urls")),
 ]
