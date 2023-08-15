@@ -1,4 +1,4 @@
-from rest_framework import filters, pagination, viewsets
+from rest_framework import filters, pagination, permissions, viewsets
 
 from . import models, serializers
 
@@ -10,6 +10,9 @@ class PostAndTagPagination(pagination.LimitOffsetPagination):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = models.User.objects.all()
     serializer_class = serializers.UserSerializer
+    permission_classes = [
+        permissions.IsAdminUser | permissions.DjangoModelPermissionsOrAnonReadOnly
+    ]
 
 
 class PostViewSet(viewsets.ModelViewSet):
@@ -31,3 +34,4 @@ class TagViewSet(viewsets.ModelViewSet):
     queryset = models.Tag.objects.all()
     serializer_class = serializers.TagSerializer
     pagination_class = PostAndTagPagination
+    permission_classes = [permissions.IsAuthenticated]

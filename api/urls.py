@@ -12,4 +12,7 @@ router.register("tags", views.TagViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
+    path("auth/", include("djoser.urls")),
+    path("authtoken/", include("djoser.urls.authtoken")),
+    path("authjwt/", include("djoser.urls.jwt")),
 ]
