@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "drf_yasg",
     "rest_framework.authtoken",
     "djoser",
     "overrides.apps.OverridesConfig",
