@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "mysite"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.2"
+psycopg2-binary = "^2.9.6"
+django-registration = "^3.4"
+black = "^23.7.0"
+isort = "^5.12.0"
+flake8 = "^6.0.0"
+django-ckeditor = "^6.6.1"
+djangorestframework = "^3.14.0"
+markdown = "^3.4.4"
+django-filter = "^23.2"
+djoser = "^2.2.0"
+djangorestframework-simplejwt = "^5.2.2"
+drf-yasg = "^1.21.7"
+gunicorn = "^21.2.0"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

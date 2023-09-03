@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+<title>{% block title %} Post {{ post.id }} {% endblock %}</title>
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-header">
+            <h1>{{ post.title }}</h1>
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>{{ post.body | safe }}</p>
+
+                <ul>
+                    Tags:{% for tag in post.tag.all %}
+
+                    <a href="{% url 'blog:detail_tag' tag.id %}"
+                       class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2"
+                       style="--bs-focus-ring-x: 10px; --bs-focus-ring-y: 10px; --bs-focus-ring-blur: 4px">
+                        {{ tag.title }}
+                    </a>
+                {% endfor %}
+                </ul>
+
+
+                <div class="position-relative">
+                    <div class="position-absolute top-50 start-50 translate-middle">
+                        <form action="{% url 'blog:upvote' post.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success">Likes - {{ post.upvote }}</button>
+                        </form>
+                        <form action="{% url 'blog:downvote' post.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Dislikes - {{ post.downvote }}</button>
+                        </form>
+                    </div>
+                </div>
+
+            </blockquote>
+        </div>
+    </div>
+
+
+
+{% endblock %}

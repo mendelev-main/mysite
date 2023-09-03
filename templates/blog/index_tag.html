@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+<title>{% block title %}TAG{% endblock %}</title>
+
+{% block content %}
+
+    <div class="d-grid gap-2">
+        <a href="/blog/create/" class="btn btn-success" role="button" data-bs-toggle="button">Create new post</a>
+        <a href="/blog/create_tag/" class="btn btn-info" role="button" data-bs-toggle="button">Create new tag</a>
+    </div>
+
+        {% if tags %}
+        <ul>
+            {% for tag in tags %}
+                <a href="{% url 'blog:detail_tag' tag.id %}"
+                   class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2"
+                   style="--bs-focus-ring-x: 10px; --bs-focus-ring-y: 10px; --bs-focus-ring-blur: 4px">
+                    {{ tag.title }}
+                </a>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No posts are available.</p>
+    {% endif %}
+{% endblock %}
